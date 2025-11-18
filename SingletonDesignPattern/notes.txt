@@ -1,0 +1,13 @@
+private static volatile Singleton instance;
+
+static → one instance shared by all objects and threads.
+volatile → ensures visibility of updated value across threads
+(important for multi-threading).
+
+
+synchronized (Singleton.class)
+This ensures only one thread creates the instance.
+
+Second check:
+if (instance == null)
+This avoids a second thread from creating another instance while waiting for the lock.
