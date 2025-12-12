@@ -1,0 +1,7 @@
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\WithFlyWeight> javac *.java
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\WithFlyWeight> jar cmf MANIFEST.MF Agent.jar Agent.class                    
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\WithFlyWeight> jar tf Agent.jar
+META-INF/
+META-INF/MANIFEST.MF
+Agent.class
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\WithFlyWeight> java -javaagent:Agent.jar WithFlyWeight

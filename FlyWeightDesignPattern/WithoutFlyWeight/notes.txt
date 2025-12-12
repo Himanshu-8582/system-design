@@ -1,0 +1,8 @@
+For creating Jar files:
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\withoutflyweight> javac *.java                              
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\withoutflyweight> jar cmf MANIFEST.MF Agent.jar Agent.class           // This Creates Jar file 
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\withoutflyweight> jar tf Agent.jar
+META-INF/
+META-INF/MANIFEST.MF
+Agent.class
+PS C:\Users\himan\OneDrive\Desktop\SystemDesign\FlyWeightDesignPattern\withoutflyweight> java -javaagent:Agent.jar WithoutFlyWeight         // To run out main file
