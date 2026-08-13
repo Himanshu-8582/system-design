@@ -1,0 +1,46 @@
+package SystemDesignQuestions.DiscountCouponEngine.coupons;
+
+import SystemDesignQuestions.DiscountCouponEngine.enums.StrategyType;
+import SystemDesignQuestions.DiscountCouponEngine.managers.DiscountStrategyManager;
+import SystemDesignQuestions.DiscountCouponEngine.models.Cart;
+import SystemDesignQuestions.DiscountCouponEngine.models.CartItem;
+import SystemDesignQuestions.DiscountCouponEngine.strategies.DiscountStrategy;
+
+public class SeasonalOffer extends Coupon{
+    private double percent;
+    private String category;
+    private DiscountStrategy strat;
+
+    public SeasonalOffer(double pct, String cat) {
+        this.percent  = pct;
+        this.category = cat;
+        this.strat    = DiscountStrategyManager.getInstance()
+                            .getStrategy(StrategyType.PERCENT, percent, 0.0);
+    }
+
+    @Override
+    public boolean isApplicable(Cart cart) {
+        for (CartItem item : cart.getItems()) {
+            if (item.getProduct().getCategory().equals(category)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public double getDiscount(Cart cart) {
+        double subtotal = 0.0;
+        for (CartItem item : cart.getItems()) {
+            if (item.getProduct().getCategory().equals(category)) {
+                subtotal += item.itemTotal();
+            }
+        }
+        return strat.calculate(subtotal);
+    }
+
+    @Override
+    public String name() {
+        return "Seasonal Offer " + (int)percent + "% off " + category;
+    }
+}
